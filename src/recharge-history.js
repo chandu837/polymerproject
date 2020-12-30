@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class RechageHistory extends PolymerElement {
+class RechargeHistory extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
@@ -24,6 +24,10 @@ class RechageHistory extends PolymerElement {
 
           padding: 10px;
         }
+        .mdl-data-table
+        {
+          width:100%;
+        }
       </style>
 
       <div class="card">
@@ -32,7 +36,7 @@ class RechageHistory extends PolymerElement {
       <div class="card">
         <div class="mdl-grid">
             <iron-ajax url="./src/userlist.json" last-response="{{item}}" auto> </iron-ajax>
-            <div class="table-responsive">
+            <div class="table-responsive mdl-cell--12-col">
               <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                   <thead>
                     <tr>
@@ -69,4 +73,4 @@ class RechageHistory extends PolymerElement {
   }
 }
 
-window.customElements.define('rechage-history', RechageHistory);
+window.customElements.define('recharge-history', RechargeHistory);

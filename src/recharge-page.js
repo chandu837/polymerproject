@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class Recharge extends PolymerElement {
+class RechargePage extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
@@ -48,12 +48,14 @@ class Recharge extends PolymerElement {
         <div class="mdl-grid ">
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name="mobilenumber" id="mobilenumber" pattern="[A-Z,a-z, ]*" placeholder="Enter Mobile Number"> 
+              <input class="mdl-textfield__input" type="text" pattern="[0-9]*" name="mobilenumber" id="mobilenumber" />
+              <label class="mdl-textfield__label" for="mobilenumber">Mobile Number</label>
+              <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="amount" placeholder="Enter recharge Amount">
+              <input class="mdl-textfield__input" type="text" name="amount" id="amount" placeholder="Enter recharge Amount">
             </div>
           </div>
           <div class="mdl-cell mdl-cell--8-col">
@@ -131,6 +133,8 @@ class Recharge extends PolymerElement {
       return false;
     }
     if(mobilenumber != "" && amount != "" && operator != "" && circle != ""){
+        localStorage.setItem("mobilenumber",mobilenumber);
+        localStorage.setItem("amount",amount);
       //storing existing values into Localstorage
       var existingRecords = JSON.parse(localStorage.getItem("userData"));
       // checking previous records avail or not 
@@ -143,15 +147,13 @@ class Recharge extends PolymerElement {
       window.localStorage.setItem("userData", JSON.stringify(existingRecords));
 
       window.alert("Recharge done Sucessfully");
-      this.$.userforms.reset();
+      window.location.href = 'rechargesuccess';
     }
     else{
       alert("All fields are mandatory..!");
-      window.location='recharge';
     }
-    window.location = 'rechargehistory';
 
   }
 }
 
-window.customElements.define('recharge', Recharge);
+window.customElements.define('recharge-page', RechargePage);

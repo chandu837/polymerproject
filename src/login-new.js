@@ -12,11 +12,12 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 class LoginNew extends PolymerElement {
   static get template() {
     return html`
-    <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
-    <script src="/node_modules/material-design-lite/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
+    <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
 
-      <style include="shared-styles">
+      <style>
         :host {
           display: block;
           padding: 10px;
@@ -67,34 +68,6 @@ class LoginNew extends PolymerElement {
   margin: 35px 0 25px;
   text-align: center;
 }
-.form-control {
-  min-height: 30px;
-  background: #fff;
-  box-shadow: none !important
-  display: block;
-  width: 95%;
-  height: calc(1.5em + .75rem + 2px);
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-.login-form .btn, .login-form .btn:active {
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  color: #fff;
-  background-color: #17a2b8;
-  padding: 12px 110px;
-  margin-left: 15px;
-  border-radius:5px;
-}
 .mdl-button--raised.mdl-button--colored {
   background: #17a2b8 !important;
   color: #fff;
@@ -107,17 +80,17 @@ class LoginNew extends PolymerElement {
             </div>
             <h2 class="text-center">User Login</h2>   
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" name="username" id="username" />
+              <input class="mdl-textfield__input" type="text" id="username"/>
               <label class="mdl-textfield__label" for="username">Username</label>
-              <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>
+
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
               <input class="mdl-textfield__input" type="password" name="password" id="password" />
               <label class="mdl-textfield__label" for="password">Password</label>
               <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>        
             <!-- Raised button -->
-            <a name="view1" href="[[rootPath]]view1"<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
+            <a name="accountsummary" href="[[rootPath]]accountsummary"<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
             Sign In
             </button></a>
         </form>
@@ -141,7 +114,7 @@ class LoginNew extends PolymerElement {
     // if entered credentials correct then redirect to Account Summery page
     if(username == "admin" && password == "pass"){
       alert("Login Success");
-      window.location = 'account-summery';
+      window.location = 'accountsummary';
     }
     else{
       alert("wrong Credentials");

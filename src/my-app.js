@@ -74,6 +74,14 @@ class MyApp extends PolymerElement {
         #contentContainer , #contentContainer[opened]{
           background: #17a2b8 !important;
         }
+        #contentContainer[opened] {
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+          background: #17a2b8 !important;
+          opacity: 0.5;
+          color: #fff;
+          font-weight: 600;
+      }
       </style>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
@@ -85,12 +93,12 @@ class MyApp extends PolymerElement {
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
         <!-- Drawer content -->
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Welcome Admin</app-toolbar>
+          <app-toolbar>Welcome User</app-toolbar>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-            <a name="account-summery" href="[[rootPath]]account-summery">Account Summary</a>
-            <a name="recharge" href="[[rootPath]]recharge">Recharge</a>
-            <a name="recharge-history" href="[[rootPath]]recharge-history">Recharge History</a>
-            <a name="login-new" href="[[rootPath]]login-new">LogOut</a>
+            <a name="accountsummary" href="[[rootPath]]accountsummary">Account Summary</a>
+            <a name="rechargepage" href="[[rootPath]]rechargepage">Mobile Recharge</a>
+            <a name="rechargehistory" href="[[rootPath]]rechargehistory">Recharge History</a>
+            <a name="loginnew" href="[[rootPath]]loginnew">LogOut</a>
           </iron-selector>
         </app-drawer>
 
@@ -105,10 +113,11 @@ class MyApp extends PolymerElement {
           </app-header>
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <account-summery name="account-summery"></account-summery>
-            <recharge name="recharge"></recharge>
-            <recharge-history name="recharge-history"></recharge-history>
-            <login-new name="login-new"></login-new>
+            <account-summary name="accountsummary"></account-summary>
+            <recharge-page name="rechargepage"></recharge-page>
+            <recharge-success name="rechargesuccess"></recharge-success>
+            <recharge-history name="rechargehistory"></recharge-history>
+            <login-new name="loginnew"></login-new>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -138,10 +147,10 @@ class MyApp extends PolymerElement {
      // Show the corresponding page according to the route.
      //
      // If no page was found in the route data, page will be an empty string.
-     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
+     // Show 'accountsummary' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'loginnew';      
-    } else if (['account-summery', 'recharge', 'rechage-history'].indexOf(page) !== -1) {
+    } else if (['accountsummary', 'rechargepage','rechargesuccess', 'rechargehistory'].indexOf(page) !== -1) {
       this.page = page;
     }else {
       this.page = 'view404';
@@ -164,12 +173,15 @@ class MyApp extends PolymerElement {
         this.$.drawer.style.display = 'none';
         this.$.header.style.display = 'none';
         break;
-      case 'accountsummery':
-        import('./account-summery.js');
+      case 'accountsummary':
+        import('./account-summary.js');
         break;
-      case 'recharge':
-        import('./recharge.js');
+      case 'rechargepage':
+        import('./recharge-page.js');
         break;
+      case 'rechargesuccess':
+      import('./recharge-success.js');
+      break;
       case 'rechargehistory':
         import('./recharge-history.js');
         break;      
