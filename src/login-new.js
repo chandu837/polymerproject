@@ -138,10 +138,10 @@ class LoginNew extends PolymerElement {
       alert("Enter Valid password..!");
       return false;
     }
-    // id credentials correct
+    // if entered credentials correct then redirect to Account Summery page
     if(username == "admin" && password == "pass"){
       alert("Login Success");
-      window.location = 'view1';
+      window.location = 'account-summery';
     }
     else{
       alert("wrong Credentials");

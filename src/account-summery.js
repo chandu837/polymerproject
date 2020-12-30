@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class MyView1 extends PolymerElement {
+class AccountSummery extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
@@ -84,4 +84,4 @@ class MyView1 extends PolymerElement {
   }
 }
 
-window.customElements.define('my-view1', MyView1);
+window.customElements.define('account-summery', AccountSummery);

@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class MyView2 extends PolymerElement {
+class Recharge extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
@@ -110,30 +110,36 @@ class MyView2 extends PolymerElement {
       alert("Mobile numbershould not empty..!");
       return false;
     }
-    // amount validations
+    // amount field validations
     var amount = this.$.amount.value;
     if(amount == "" && amount =="null"){
       alert("Rechage amount should not empty..!");
       return false;
     }
+
+    // Operator field Validations
     var operator = this.$.operator.value;
     if(operator == "" && operator =="null"){
       alert("Operator field should not empty..!");
       return false;
     }
+
+    // Circle field validations 
     var circle = this.$.circle.value;
     if(circle == "" && circle =="null"){
       alert("Circle field should not empty..!");
       return false;
     }
-    var userlist = [];
     if(mobilenumber != "" && amount != "" && operator != "" && circle != ""){
+      //storing existing values into Localstorage
       var existingRecords = JSON.parse(localStorage.getItem("userData"));
+      // checking previous records avail or not 
       if (existingRecords == null) existingRecords = [];
       var userlist = [];
       userlist.push(mobilenumber, amount, operator, circle)
       window.localStorage.setItem('Current-Entry-List', JSON.stringify(userlist));
       existingRecords.push(userlist);
+      //store data into local storage
       window.localStorage.setItem("userData", JSON.stringify(existingRecords));
 
       window.alert("Recharge done Sucessfully");
@@ -141,36 +147,11 @@ class MyView2 extends PolymerElement {
     }
     else{
       alert("All fields are mandatory..!");
-      window.location='view2';
+      window.location='recharge';
     }
-    // Recharge Amount Validations
-    // var amount = this.$.amount.value;
-    // if(amount == "" || amount == "null"){
-    //   alert(" Amount Mandatory...!");
-    //   return false;
-    // }else{
-    //   localStorage.setItem("amount",amount);
-    // }
-
-    // // Operator Validations
-    // var operator = this.$.operator.value;
-    // if(operator == "" || operator == "null"){
-    //   alert(" Operator Mandatory...!");
-    //   return false;
-    // }else{
-    //   localStorage.setItem("operator",operator);
-    // }
-    // // Circle Validations
-    // var circle = this.$.circle.value;
-    // if(circle == "" || circle == "null"){
-    //   alert("Circle Mandatory");
-    //   return false;
-    // }else{
-    //   localStorage.setItem("circle",circle);
-    // }
-    window.location = 'view3';
+    window.location = 'rechargehistory';
 
   }
 }
 
-window.customElements.define('my-view2', MyView2);
+window.customElements.define('recharge', Recharge);

@@ -11,7 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import './shared-styles.js';
 
-class MyView3 extends PolymerElement {
+class RechageHistory extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
@@ -61,11 +61,12 @@ class MyView3 extends PolymerElement {
     `;
   }
   ready() {
-    super.ready();   
+    super.ready();  
+    // Get data form localstorage 
     this.userlist = JSON.parse(window.localStorage.getItem('userData'));
     console.log(this.userlist);
 
   }
 }
 
-window.customElements.define('my-view3', MyView3);
+window.customElements.define('rechage-history', RechageHistory);
