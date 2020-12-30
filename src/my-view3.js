@@ -27,86 +27,44 @@ class MyView3 extends PolymerElement {
       </style>
 
       <div class="card">
-      <h6>Recharge History</h6>
-        <table class="mdl-data-table mdl-js-data-table">
-        <thead>
-          <tr>
-            <th class="mdl-data-table__cell--non-numeric">Mobile Number</th>
-            <th class="mdl-data-table__cell--non-numeric">Amount</th>
-            <th class="mdl-data-table__cell--non-numeric">Operator</th>
-            <th class="mdl-data-table__cell--non-numeric">Circle</th>
-            <th class="mdl-data-table__cell--non-numeric">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9071351777</td>
-            <td class="mdl-data-table__cell--non-numeric">100</td>
-            <td class="mdl-data-table__cell--non-numeric">JIO</td>
-            <td class="mdl-data-table__cell--non-numeric">Karnataka</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9071350777</td>
-            <td class="mdl-data-table__cell--non-numeric">100</td>
-            <td class="mdl-data-table__cell--non-numeric">JIO</td>
-            <td class="mdl-data-table__cell--non-numeric">Tamilnadu</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9071381777</td>
-            <td class="mdl-data-table__cell--non-numeric">100</td>
-            <td class="mdl-data-table__cell--non-numeric">JIO</td>
-            <td class="mdl-data-table__cell--non-numeric">Karnataka</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9603480580</td>
-            <td class="mdl-data-table__cell--non-numeric">399</td>
-            <td class="mdl-data-table__cell--non-numeric">JIO</td>
-            <td class="mdl-data-table__cell--non-numeric">Andhra Pradesh</td>
-            <td class="mdl-data-table__cell--non-numeric">Failed</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9949094845</td>
-            <td class="mdl-data-table__cell--non-numeric">99</td>
-            <td class="mdl-data-table__cell--non-numeric">AIRTEL</td>
-            <td class="mdl-data-table__cell--non-numeric">Andhra Pradesh</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">8500829730</td>
-            <td class="mdl-data-table__cell--non-numeric">399</td>
-            <td class="mdl-data-table__cell--non-numeric">VI</td>
-            <td class="mdl-data-table__cell--non-numeric">Karnataka</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">8500089423</td>
-            <td class="mdl-data-table__cell--non-numeric">99</td>
-            <td class="mdl-data-table__cell--non-numeric">BSNL</td>
-            <td class="mdl-data-table__cell--non-numeric">Andhra Pradesh</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9949094846</td>
-            <td class="mdl-data-table__cell--non-numeric">199</td>
-            <td class="mdl-data-table__cell--non-numeric">BSNL</td>
-            <td class="mdl-data-table__cell--non-numeric">Karnataka</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-          <tr>
-            <td class="mdl-data-table__cell--non-numeric">9071341777</td>
-            <td class="mdl-data-table__cell--non-numeric">399</td>
-            <td class="mdl-data-table__cell--non-numeric">JIO</td>
-            <td class="mdl-data-table__cell--non-numeric">Karnataka</td>
-            <td class="mdl-data-table__cell--non-numeric">Success</td>
-          </tr>
-         
-        </tbody>
-      </table>
+        <h5>Recharge History</h5>
+      </div>
+      <div class="card">
+        <div class="mdl-grid">
+            <iron-ajax url="./src/userlist.json" last-response="{{item}}" auto> </iron-ajax>
+            <div class="table-responsive">
+              <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                  <thead>
+                    <tr>
+                        <th scope="col" class="mdl-data-table__cell--non-numeric">Mobile Number</th>
+                        <th scope="col" class="mdl-data-table__cell--non-numeric">Amount</th>
+                        <th scope="col" class="mdl-data-table__cell--non-numeric">Operator</th>
+                        <th scope="col" class="mdl-data-table__cell--non-numeric">Circle</th>
+                        <th scope="col" class="mdl-data-table__cell--non-numeric">Status</th>
+                    </tr>
+                  </thead>
+                  <template is="dom-repeat" items="{{userlist}}" >
+                    <tbody>
+                        <tr class="item">
+                          <td class="mdl-data-table__cell--non-numeric">{{item.0}}</td>
+                          <td class="mdl-data-table__cell--non-numeric">{{item.1}}</td>
+                          <td class="mdl-data-table__cell--non-numeric">{{item.2}}</td>
+                          <td class="mdl-data-table__cell--non-numeric">{{item.3}}</td>
+                          <td class="mdl-data-table__cell--non-numeric">Success</td>
+                        </tr>
+                    </tbody>
+                  </template>
+              </table>
+            </div>
+        </div>
       </div>
     `;
+  }
+  ready() {
+    super.ready();   
+    this.userlist = JSON.parse(window.localStorage.getItem('userData'));
+    console.log(this.userlist);
+
   }
 }
 

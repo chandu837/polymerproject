@@ -9,12 +9,6 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-
-// import './shared-styles.js';
-//import '@polymer/paper-icon-button/paper-icon-button.js';
-
-//import '@polymer/paper-input/paper-input.js';
-
 class LoginNew extends PolymerElement {
   static get template() {
     return html`
@@ -107,53 +101,51 @@ class LoginNew extends PolymerElement {
 }
       </style>
       <div class="login-form">
-        <form>
+        <form name="userForm" >
             <div class="avatar">
                 <img src="images/avatar.png" alt="Avatar">
             </div>
-            <h2 class="text-center">User Login</h2>  
-              <paper-input always-float-label label="Floating label">User  Name </paper-input>
- 
+            <h2 class="text-center">User Login</h2>   
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z]*" name="username" id="username" />
+              <input class="mdl-textfield__input" type="text" name="username" id="username" />
               <label class="mdl-textfield__label" for="username">Username</label>
               <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" pattern="[A-Z,a-z]*" name="password" id="password" />
+              <input class="mdl-textfield__input" type="password" name="password" id="password" />
               <label class="mdl-textfield__label" for="password">Password</label>
               <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>        
             <!-- Raised button -->
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
+            <a name="view1" href="[[rootPath]]view1"<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
             Sign In
-            </button>
+            </button></a>
         </form>
     </div>
 
 `;
   }
   userValidation() {
+    // username validations
     var username = this.$.username.value;
+    if(username == "" || username== "null"){
+      alert("Enter Valid username..!");
+      return false;
+    }
+    //password validations
     var password = this.$.password.value;
-    // Username Validations
-    if (username !== "admin") {
-      alert("Please Enter Valid User Name");
-      this.$.username.focus();
+    if(password == "" || password == "null"){
+      alert("Enter Valid password..!");
       return false;
     }
-    // Password Validations
-    if (password !== "pass") {
-
-      alert("Please Enter valid password");
-      return false;
-    }
-    // If Entered Credentials Correct redirect to Account Summary
+    // id credentials correct
     if(username == "admin" && password == "pass"){
-      window.location.href = "view1";
+      alert("Login Success");
+      window.location = 'view1';
     }
-    else {
-        alert("Wrong Credentials...! Please enter valid credentials.");
+    else{
+      alert("wrong Credentials");
+      window.location.reload();
     }
   };
 }

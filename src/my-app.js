@@ -48,6 +48,7 @@ class MyApp extends PolymerElement {
         app-header {
           color: #fff;
           background-color: var(--app-primary-color);
+          display:none;
         }
 
         app-header paper-icon-button {
@@ -70,8 +71,8 @@ class MyApp extends PolymerElement {
           color: black;
           font-weight: bold;
         }
-        #contentContainer{
-          background: #3367d6;
+        #contentContainer , #contentContainer[opened]{
+          background: #17a2b8 !important;
         }
       </style>
 

@@ -33,16 +33,22 @@ class MyView2 extends PolymerElement {
           background-color: #fff;
           box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
       }
+      .mdl-button--raised.mdl-button--colored{
+        background: #17a2b8 !important;
+        font-weight: 600;
+      }
       </style>
-
       <div class="card">
-        <h4>Mobile Recharge</h4>
+        <h5>Mobile Recharge</h5>
+      </div>
+      <div class="card">
         <h6> RECHARGE YOUR MOBILE </h6>
         <p>Tell us your number and we will figure out the rest</p>
+        <form id="userforms">
         <div class="mdl-grid ">
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" placeholder="Enter Mobile Number"> 
+              <input class="mdl-textfield__input" type="text" name="mobilenumber" id="mobilenumber" pattern="[A-Z,a-z, ]*" placeholder="Enter Mobile Number"> 
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
@@ -65,43 +71,105 @@ class MyView2 extends PolymerElement {
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
-            <!-- Simple Select 
-            <div class="mdl-textfield mdl-js-textfield getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="sample1" readonly>
-                <input type="hidden" value="" name="sample1">
-                <label for="sample1" class="mdl-textfield__label">Operator</label>
-                <ul for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="AIRTEL">AIRTEL</li>
-                    <li class="mdl-menu__item" data-val="JIO">JIO</li>
-                    <li class="mdl-menu__item" data-val="BSNL">BSNL</li>
-                </ul>
-            </div> -->
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name="operator" id="operator" placeholder="Enter Operator">
+            <!-- Simple Select -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <select class="mdl-textfield__input" id="operator" name="operator">
+                <option></option>
+                <option value="Airtel">Airtel</option>
+                <option value="VI">VI</option>
+                <option value="Jio">Jio</option>
+                <option value="Bsnl">Bsnl</option>
+              </select>
+              <label class="mdl-textfield__label" for="operator">operator</label>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
-            <!-- Simple Select 
-            <div class="mdl-textfield mdl-js-textfield getmdl-select">
-                <input type="text" value="" class="mdl-textfield__input" id="sample1" readonly>
-                <input type="hidden" value="" name="sample1">
-                <label for="sample1" class="mdl-textfield__label">Circle</label>
-                <ul for="sample1" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
-                    <li class="mdl-menu__item" data-val="AIRTEL">AIRTEL</li>
-                    <li class="mdl-menu__item" data-val="JIO">JIO</li>
-                    <li class="mdl-menu__item" data-val="BSNL">BSNL</li>
-                </ul>
-            </div> -->
-            <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name="circle" id="circle"  placeholder="Enter Circle">
+            <!-- Simple Select -->
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+              <select class="mdl-textfield__input" id="circle" name="circle">
+                <option></option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Tamilnadu">Tamilnadu</option>
+              </select>
+              <label class="mdl-textfield__label" for="circle">circle</label>
             </div>
           </div>
             <!-- Colored raised button -->
-            <a name="view3" href="[[rootPath]]view3"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="rechageValidations">
               Proceed
-            </button></a>
+            </button>
         </div>
+        </form>
     `;
+  }
+  rechageValidations(){
+    // Mobile Number Validations
+    var mobilenumber = this.$.mobilenumber.value;
+    if(mobilenumber == "" && mobilenumber =="null"){
+      alert("Mobile numbershould not empty..!");
+      return false;
+    }
+    // amount validations
+    var amount = this.$.amount.value;
+    if(amount == "" && amount =="null"){
+      alert("Rechage amount should not empty..!");
+      return false;
+    }
+    var operator = this.$.operator.value;
+    if(operator == "" && operator =="null"){
+      alert("Operator field should not empty..!");
+      return false;
+    }
+    var circle = this.$.circle.value;
+    if(circle == "" && circle =="null"){
+      alert("Circle field should not empty..!");
+      return false;
+    }
+    var userlist = [];
+    if(mobilenumber != "" && amount != "" && operator != "" && circle != ""){
+      var existingRecords = JSON.parse(localStorage.getItem("userData"));
+      if (existingRecords == null) existingRecords = [];
+      var userlist = [];
+      userlist.push(mobilenumber, amount, operator, circle)
+      window.localStorage.setItem('Current-Entry-List', JSON.stringify(userlist));
+      existingRecords.push(userlist);
+      window.localStorage.setItem("userData", JSON.stringify(existingRecords));
+
+      window.alert("Recharge done Sucessfully");
+      this.$.userforms.reset();
+    }
+    else{
+      alert("All fields are mandatory..!");
+      window.location='view2';
+    }
+    // Recharge Amount Validations
+    // var amount = this.$.amount.value;
+    // if(amount == "" || amount == "null"){
+    //   alert(" Amount Mandatory...!");
+    //   return false;
+    // }else{
+    //   localStorage.setItem("amount",amount);
+    // }
+
+    // // Operator Validations
+    // var operator = this.$.operator.value;
+    // if(operator == "" || operator == "null"){
+    //   alert(" Operator Mandatory...!");
+    //   return false;
+    // }else{
+    //   localStorage.setItem("operator",operator);
+    // }
+    // // Circle Validations
+    // var circle = this.$.circle.value;
+    // if(circle == "" || circle == "null"){
+    //   alert("Circle Mandatory");
+    //   return false;
+    // }else{
+    //   localStorage.setItem("circle",circle);
+    // }
+    window.location = 'view3';
+
   }
 }
 
