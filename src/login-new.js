@@ -13,7 +13,8 @@ class LoginNew extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
     <link rel="stylesheet" href="//storage.googleapis.com/code.getmdl.io/1.0.1/material.teal-red.min.css" />
     <script src="//storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
 
@@ -73,30 +74,32 @@ class LoginNew extends PolymerElement {
   color: #fff;
 }
       </style>
-      <div class="login-form">
-        <form name="userForm" >
-            <div class="avatar">
-                <img src="images/avatar.png" alt="Avatar">
-            </div>
-            <h2 class="text-center">User Login</h2>   
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="username"/>
-              <label class="mdl-textfield__label" for="username">Username</label>
-            </div>
+      <div class="mdl-layout__content ">
+        <div class="mdl-grid content-grid">
+          <div class="login-form">
+              <form name="userForm" >
+                  <div class="avatar">
+                      <img src="images/avatar.png" alt="Avatar">
+                  </div>
+                  <h2 class="text-center">User Login</h2>   
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="username"/>
+                    <label class="mdl-textfield__label" for="username">Username</label>
+                  </div>
 
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="password" name="password" id="password" />
-              <label class="mdl-textfield__label" for="password">Password</label>
-              <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
-            </div>        
-            <!-- Raised button -->
-            <a name="accountsummary" href="[[rootPath]]accountsummary"<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
-            Sign In
-            </button></a>
-        </form>
-    </div>
-
-`;
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" name="password" id="password" />
+                    <label class="mdl-textfield__label" for="password">Password</label>
+                    <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
+                  </div>        
+                  <!-- Raised button -->
+                  <a name="accountsummary" href="[[rootPath]]accountsummary"><button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="userValidation">
+                  Sign In
+                  </button></a>
+              </form>
+          </div>
+        </div>
+      </div>`;
   }
   userValidation() {
     // username validations

@@ -48,7 +48,7 @@ class RechargePage extends PolymerElement {
         <div class="mdl-grid ">
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" pattern="[0-9]*" name="mobilenumber" id="mobilenumber" />
+              <input class="mdl-textfield__input" type="text" pattern="[0-9]*" name="mobilenumber" id="mobilenumber" maxlength="10"/>
               <label class="mdl-textfield__label" for="mobilenumber">Mobile Number</label>
               <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
             </div>
@@ -146,12 +146,14 @@ class RechargePage extends PolymerElement {
       //store data into local storage
       window.localStorage.setItem("userData", JSON.stringify(existingRecords));
 
-      window.alert("Recharge done Sucessfully");
-      window.location.href = 'rechargesuccess';
+      alert("Recharge done Sucessfully");
+      window.location = 'rechargesuccess';
+      
     }
     else{
       alert("All fields are mandatory..!");
     }
+    window.location.href = 'rechargesuccess';
 
   }
 }

@@ -97,6 +97,7 @@ class MyApp extends PolymerElement {
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
             <a name="accountsummary" href="[[rootPath]]accountsummary">Account Summary</a>
             <a name="rechargepage" href="[[rootPath]]rechargepage">Mobile Recharge</a>
+            <a name="rechargesuccess" href="[[rootPath]]rechargesuccess"> Recharge confirmation </a>
             <a name="rechargehistory" href="[[rootPath]]rechargehistory">Recharge History</a>
             <a name="loginnew" href="[[rootPath]]loginnew">LogOut</a>
           </iron-selector>
@@ -175,6 +176,7 @@ class MyApp extends PolymerElement {
         break;
       case 'accountsummary':
         import('./account-summary.js');
+        // this.$.header.style.display = 'block';
         break;
       case 'rechargepage':
         import('./recharge-page.js');
