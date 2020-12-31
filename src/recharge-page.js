@@ -9,14 +9,12 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
-import './shared-styles.js';
 
 class RechargePage extends PolymerElement {
   static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
     <script src="/node_modules/material-design-lite/material.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Wide card with share menu button -->
     
       <style include="shared-styles">
@@ -137,8 +135,6 @@ class RechargePage extends PolymerElement {
         localStorage.setItem("amount",amount);
       //storing existing values into Localstorage
       var existingRecords = JSON.parse(localStorage.getItem("userData"));
-      // checking previous records avail or not 
-      if (existingRecords == null) existingRecords = [];
       var userlist = [];
       userlist.push(mobilenumber, amount, operator, circle)
       window.localStorage.setItem('Current-Entry-List', JSON.stringify(userlist));

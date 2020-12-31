@@ -121,7 +121,6 @@ class LoginNew extends PolymerElement {
     }
     else{
       alert("wrong Credentials");
-      window.location.reload();
     }
   };
 }
