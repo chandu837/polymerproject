@@ -20,8 +20,9 @@ import '@polymer/app-route/app-location.js';
 import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
-import '@polymer/paper-icon-button/paper-icon-button.js';
-import './my-icons.js';
+import '@polymer/paper-button/paper-button.js';
+
+
 
 // Gesture events like tap and track generated from touch will not be
 // preventable, allowing for better scrolling performance.
@@ -176,16 +177,23 @@ class MyApp extends PolymerElement {
         break;
       case 'accountsummary':
         import('./account-summary.js');
-        // this.$.header.style.display = 'block';
+        this.$.drawer.style.display = 'block';
+        this.$.header.style.display = 'block';
         break;
       case 'rechargepage':
         import('./recharge-page.js');
+        this.$.drawer.style.display = 'block';
+        this.$.header.style.display = 'block';
         break;
       case 'rechargesuccess':
       import('./recharge-success.js');
+      this.$.drawer.style.display = 'block';
+        this.$.header.style.display = 'block';
       break;
       case 'rechargehistory':
         import('./recharge-history.js');
+        this.$.drawer.style.display = 'block';
+        this.$.header.style.display = 'block';
         break;      
       case 'view404':
         import('./my-view404.js');

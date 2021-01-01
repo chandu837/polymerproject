@@ -9,6 +9,7 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-input/paper-input.js';
 
 class RechargePage extends PolymerElement {
   static get template() {
@@ -46,14 +47,15 @@ class RechargePage extends PolymerElement {
         <div class="mdl-grid ">
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" pattern="[0-9]*" name="mobilenumber" id="mobilenumber" maxlength="10"/>
-              <label class="mdl-textfield__label" for="mobilenumber">Mobile Number</label>
-              <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
+
+            <paper-input type="text" name="mobilenumber" label="Mobile Number" id="mobilenumber" required error-message="Enter valid Mobile Number...!" pattern="[0-9]*" auto-validate maxlength="10"></paper-input>
+
+              
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name="amount" id="amount" placeholder="Enter recharge Amount">
+              <paper-input type="text" name="amount" label="Amount" id="amount" required error-message="Enter valid Recharge Amount!" pattern="[0-9]*" auto-validate maxlength="3"></paper-input>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--8-col">

@@ -9,6 +9,7 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-input/paper-input.js';
 
 class AccountSummary extends PolymerElement {
   static get template() {
@@ -36,44 +37,42 @@ class AccountSummary extends PolymerElement {
           </div>
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="Chandra Sekhar" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+                <paper-input type="text" label="Account Holder Name" value="Chandra Sekhar" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="055201534625" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+                  <paper-input type="text" label="Account Number" value="055201534625" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="Infosys Bangalore" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="Location" value="Infosys Bangalore" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="ICICI0000525" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="IFSC Code" value="ICICI0000525" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="+91-9071351777" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="Mobile Number" value="+91-9071351777" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="chandu837@gmail.com" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="Email Id" value="chandu837@gmail.com" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
-              <div class="mdl-textfield mdl-js-textfield">
-                <input class="mdl-textfield__input" type="text" id="user" pattern="[A-Z,a-z, ]*" value="258628233734" readonly>
-                <span class="mdl-textfield__error">Letters and spaces only</span>
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="Aadhaar Number" value="258628233734" readonly></paper-input>
+              </div>
+            </div>
+             <div class="mdl-cell mdl-cell--6-col">
+               <div class="mdl-textfield mdl-js-textfield">
+                  <paper-input type="text" label="PAN Number" value="ALTPY1250R" readonly></paper-input>
               </div>
             </div>
           </div>
