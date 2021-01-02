@@ -9,6 +9,7 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+import '@polymer/paper-input/paper-input.js';
 
 class RechargeSuccess extends PolymerElement {
   static get template() {
@@ -43,13 +44,14 @@ class RechargeSuccess extends PolymerElement {
         <div class="mdl-grid ">
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name ="rechargedMobileNumber" id="rechargedMobileNumber" readonly/>
-              <span class="mdl-textfield__error">Only alphabet and no spaces, please!</span>
+
+              <paper-input type="text" name="rechargedMobileNumber" label="Mobile Number" id="rechargedMobileNumber" required auto-validate readonly></paper-input>
             </div>
           </div>
           <div class="mdl-cell mdl-cell--6-col">
             <div class="mdl-textfield mdl-js-textfield">
-              <input class="mdl-textfield__input" type="text" name="rechagedAmount" id="rechagedAmount" placeholder="Enter recharge Amount">
+
+              <paper-input type="text" name="rechagedAmount" label="Amount" id="rechagedAmount" required auto-validate readonly></paper-input>
             </div>
           </div>  
           <div class="mdl-cell mdl-cell--6-col">
@@ -59,7 +61,7 @@ class RechargeSuccess extends PolymerElement {
             </button>
           </div> 
           <div class="mdl-cell mdl-cell--4-col">
-          <input class="mdl-textfield__input" type="text" name ="otp" id="otp" readonly/>
+          <paper-input type="text" name="otp" label="OTP" id="otp" required auto-validate readonly></paper-input>
           </div>  
           <div class="mdl-cell mdl-cell--8-col center-align">
             <!-- Colored raised button --><br/><br/>
@@ -88,10 +90,7 @@ class RechargeSuccess extends PolymerElement {
     // Get data form localstorage 
     this.$.rechargedMobileNumber.value = localStorage.getItem('mobilenumber');
     this.$.rechagedAmount.value = localStorage.getItem('amount');
-    // this.$.otp.value = document.write( generateOTP() );
-  }
-// Function to generate OTP 
-  
+  }  
 }
  
 window.customElements.define('recharge-success', RechargeSuccess);

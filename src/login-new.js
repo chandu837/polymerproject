@@ -108,7 +108,7 @@ class LoginNew extends PolymerElement {
 		}
 		else{
 			alert("wrong Credentials");
-			//Need to force a change on value to trigger the notify to `paper input` fields
+			//Need to force a change on value to trigger the notify to `paper input` field focused
 			this.$.password.focus();
 		}
 	};

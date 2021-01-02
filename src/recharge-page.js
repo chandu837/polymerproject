@@ -94,7 +94,7 @@ class RechargePage extends PolymerElement {
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                 <option value="Tamilnadu">Tamilnadu</option>
               </select>
-              <label class="mdl-textfield__label" for="circle">circle</label>
+              <label class="mdl-textfield__label floating-label" for="circle">circle</label>
             </div>
           </div>
             <!-- Colored raised button -->
@@ -145,7 +145,7 @@ class RechargePage extends PolymerElement {
       window.localStorage.setItem("userData", JSON.stringify(existingRecords));
 
       alert("Recharge done Sucessfully");
-      window.location = 'rechargesuccess';
+      window.location.href = 'rechargesuccess';
       
     }
     else{

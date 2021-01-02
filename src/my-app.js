@@ -152,7 +152,7 @@ class MyApp extends PolymerElement {
      // Show 'accountsummary' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'loginnew';      
-    } else if (['accountsummary', 'rechargepage','rechargesuccess', 'rechargehistory'].indexOf(page) !== -1) {
+    } else if (['loginnew','accountsummary', 'rechargepage','rechargesuccess', 'rechargehistory'].indexOf(page) !== -1) {
       this.page = page;
     }else {
       this.page = 'view404';
@@ -177,23 +177,15 @@ class MyApp extends PolymerElement {
         break;
       case 'accountsummary':
         import('./account-summary.js');
-        this.$.drawer.style.display = 'block';
-        this.$.header.style.display = 'block';
         break;
       case 'rechargepage':
         import('./recharge-page.js');
-        this.$.drawer.style.display = 'block';
-        this.$.header.style.display = 'block';
         break;
       case 'rechargesuccess':
       import('./recharge-success.js');
-      this.$.drawer.style.display = 'block';
-        this.$.header.style.display = 'block';
       break;
       case 'rechargehistory':
         import('./recharge-history.js');
-        this.$.drawer.style.display = 'block';
-        this.$.header.style.display = 'block';
         break;      
       case 'view404':
         import('./my-view404.js');
