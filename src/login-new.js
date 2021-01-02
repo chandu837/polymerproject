@@ -79,7 +79,7 @@ class LoginNew extends PolymerElement {
 					</div>
 					<h2 class="text-center">User Login</h2> 
 					<paper-input type="text" name="name" label="User Name" id="username" required error-message="Please enter valid user name ...!" auto-validate maxlength="10" pattern="[A-Za-z]*"></paper-input>
-					<paper-input type="password" id="password" label="Password"  required error-message="Please enter valid password" auto-validate maxlength="5"></paper-input><br>
+					<paper-input type="password" id="password" label="Password"  required error-message="Please enter valid password...!" auto-validate maxlength="5"></paper-input><br>
 					<!-- Raised button -->
                <paper-button raised class="submitBtn" on-click="userValidation">Submit</paper-button>
 			</form>
