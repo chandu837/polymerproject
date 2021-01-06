@@ -11,6 +11,7 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-input/paper-input.js';
 
+
 class RechargePage extends PolymerElement {
   static get template() {
     return html`
@@ -37,72 +38,81 @@ class RechargePage extends PolymerElement {
         font-weight: 600;
       }
       </style>
+      <dom-module id="user-view">
+
       <div class="card">
         <h5>Mobile Recharge</h5>
       </div>
       <div class="card">
         <h6> RECHARGE YOUR MOBILE </h6>
         <p>Tell us your number and we will figure out the rest</p>
-        <form id="userforms">
-        <div class="mdl-grid ">
-          <div class="mdl-cell mdl-cell--6-col">
-            <div class="mdl-textfield mdl-js-textfield">
+           <div class="mdl-grid ">
+             <div class="mdl-cell mdl-cell--6-col">
+               <div class="mdl-textfield mdl-js-textfield">
 
-            <paper-input type="text" name="mobilenumber" label="Mobile Number" id="mobilenumber" required error-message="Enter valid Mobile Number...!" pattern="[0-9]*" auto-validate maxlength="10"></paper-input>
+               <paper-input type="text" name="mobilenumber" label="Mobile Number" id="mobilenumber" required error-message="Enter valid Mobile Number...!" pattern="[0-9]*" auto-validate maxlength="10"></paper-input>
 
-              
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--6-col">
-            <div class="mdl-textfield mdl-js-textfield">
-              <paper-input type="text" name="amount" label="Amount" id="amount" required error-message="Enter valid Recharge Amount!" pattern="[0-9]*" auto-validate maxlength="3"></paper-input>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--8-col">
-            <div class="mdl-textfield mdl-js-textfield">
-              <label class = "mdl-radio mdl-js-radio" for = "prepaid">
-                  <input type = "radio" id = "prepaid" name = "operator" 
-                    class = "mdl-radio__button" checked>
-                  <span class = "mdl-radio__label">Prepaid</span>
-              </label>
-              <label class = "mdl-radio mdl-js-radio" for = "postpaid">
-                  <input type = "radio" id = "postpaid" name = "operator" 
-                    class = "mdl-radio__button" >
-                  <span class = "mdl-radio__label">Postpaid</span>
-              </label>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--6-col">
-            <!-- Simple Select -->
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <select class="mdl-textfield__input" id="operator" name="operator">
-                <option></option>
-                <option value="Airtel">Airtel</option>
-                <option value="VI">VI</option>
-                <option value="Jio">Jio</option>
-                <option value="Bsnl">Bsnl</option>
-              </select>
-              <label class="mdl-textfield__label" for="operator">operator</label>
-            </div>
-          </div>
-          <div class="mdl-cell mdl-cell--6-col">
-            <!-- Simple Select -->
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <select class="mdl-textfield__input" id="circle" name="circle">
-                <option></option>
-                <option value="Karnataka">Karnataka</option>
-                <option value="Andhra Pradesh">Andhra Pradesh</option>
-                <option value="Tamilnadu">Tamilnadu</option>
-              </select>
-              <label class="mdl-textfield__label floating-label" for="circle">circle</label>
-            </div>
-          </div>
-            <!-- Colored raised button -->
-            <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="rechageValidations">
-              Proceed
-            </button>
-        </div>
-        </form>
+                 
+               </div>
+             </div>
+             <div class="mdl-cell mdl-cell--6-col">
+               <div class="mdl-textfield mdl-js-textfield">
+                 <paper-input type="text" name="amount" label="Amount" id="amount" required error-message="Enter valid Recharge Amount!" pattern="[0-9]*" auto-validate maxlength="3"></paper-input>
+               </div>
+             </div>
+             <div class="mdl-cell mdl-cell--8-col">
+               <div class="mdl-textfield mdl-js-textfield">
+                 <label class = "mdl-radio mdl-js-radio" for = "prepaid">
+                     <input type = "radio" id = "prepaid" 
+                       class = "mdl-radio__button" checked>
+                     <span class = "mdl-radio__label">Prepaid</span>
+                 </label>
+                 <label class = "mdl-radio mdl-js-radio" for = "postpaid">
+                     <input type = "radio" id = "postpaid" 
+                       class = "mdl-radio__button" >
+                     <span class = "mdl-radio__label">Postpaid</span>
+                 </label>
+               </div>
+             </div>
+             <div class="mdl-cell mdl-cell--6-col">
+               <!-- Simple Select -->
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <select class="mdl-textfield__input" id="operator">
+                   <option></option>
+                   <option value="Airtel">Airtel</option>
+                   <option value="VI">VI</option>
+                   <option value="Jio">Jio</option>
+                   <option value="Bsnl">Bsnl</option>
+                 </select>
+                 <label class="mdl-textfield__label" for="operator">operator</label>
+               </div>
+             </div>
+             <div class="mdl-cell mdl-cell--6-col">
+               <!-- Simple Select -->
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                 <select class="mdl-textfield__input" id="circle">
+                   <option></option>
+                   <option value="Karnataka">Karnataka</option>
+                   <option value="Andhra Pradesh">Andhra Pradesh</option>
+                   <option value="Tamilnadu">Tamilnadu</option>
+                 </select>
+                 <label class="mdl-textfield__label floating-label" for="circle">circle</label>
+               </div>
+
+               <!--<paper-dropdown-menu label="Dinosaurs">
+                 <paper-listbox slot="dropdown-content" class="dropdown-content">
+                   <paper-item>allosaurus</paper-item>
+                   <paper-item>brontosaurus</paper-item>
+                   <paper-item>carcharodontosaurus</paper-item>
+                   <paper-item>diplodocus</paper-item>
+                 </paper-listbox>
+               </paper-dropdown-menu>-->
+             </div>
+               <!-- Colored raised button -->
+               <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="rechageValidations">
+                 Proceed
+               </button>
+           </div>
     `;
   }
   rechageValidations(){
@@ -133,8 +143,6 @@ class RechargePage extends PolymerElement {
       return false;
     }
     if(mobilenumber != "" && amount != "" && operator != "" && circle != ""){
-        localStorage.setItem("mobilenumber",mobilenumber);
-        localStorage.setItem("amount",amount);
       //storing existing values into Localstorage
       var existingRecords = JSON.parse(localStorage.getItem("userData"));
       var userlist = [];
@@ -145,14 +153,12 @@ class RechargePage extends PolymerElement {
       window.localStorage.setItem("userData", JSON.stringify(existingRecords));
 
       alert("Recharge done Sucessfully");
-      window.location.href = 'rechargesuccess';
+      window.location.href = '/rechargesuccess';
       
     }
     else{
       alert("All fields are mandatory..!");
     }
-    window.location.href = 'rechargesuccess';
-
   }
 }
 

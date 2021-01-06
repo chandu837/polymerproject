@@ -84,17 +84,21 @@ class MyApp extends PolymerElement {
           font-weight: 600;
       }
       </style>
+      <!--- application location component starts here -->
+      <app-location route="{{route}}" url-space-regex="^[[rootPath]]"></app-location>
+      <!--- application location component ends here -->
 
-      <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
-      </app-location>
+      <!--- application routing component starts here-->
+      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+      <!--- application routing component ends here -->
 
-      <app-route route="{{route}}" pattern="[[rootPath]]:page" data="{{routeData}}" tail="{{subroute}}">
-      </app-route>
-
+      <!--- application drawer layout component start -->
       <app-drawer-layout fullbleed="" narrow="{{narrow}}">
-        <!-- Drawer content -->
+        <!-- drawer content code starts here for navigations screens -->
         <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
-          <app-toolbar>Welcome User</app-toolbar>
+          <app-toolbar>Welcome Admin</app-toolbar>
+
+          <!-- iron selector code starts here -->
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
             <a name="accountsummary" href="[[rootPath]]accountsummary">Account Summary</a>
             <a name="rechargepage" href="[[rootPath]]rechargepage">Mobile Recharge</a>
@@ -102,18 +106,23 @@ class MyApp extends PolymerElement {
             <a name="rechargehistory" href="[[rootPath]]rechargehistory">Recharge History</a>
             <a name="loginnew" href="[[rootPath]]loginnew">LogOut</a>
           </iron-selector>
+
+          <!-- iron selector code ends here -->
         </app-drawer>
+        <!-- app drawer code ends here -->
 
         <!-- Main content -->
         <app-header-layout has-scrolling-region="">
-
+        <!-- app header code starts here -->
           <app-header id="header" slot="header" condenses="" reveals="" effects="waterfall">
             <app-toolbar>
               <paper-icon-button icon="my-icons:menu" drawer-toggle=""></paper-icon-button>
               <div main-title="">User Dashboard</div>
             </app-toolbar>
           </app-header>
+          <!-- app header code ends here -->
 
+          <!-- iron pages code starts here -->
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <account-summary name="accountsummary"></account-summary>
             <recharge-page name="rechargepage"></recharge-page>
@@ -122,8 +131,13 @@ class MyApp extends PolymerElement {
             <login-new name="loginnew"></login-new>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
+          <!-- iron pages code ends here -->
+
         </app-header-layout>
+        <!-- app header code ends here -->
+
       </app-drawer-layout>
+      <!-- app drawer code ends here -->
     `;
   }
 
@@ -132,6 +146,7 @@ class MyApp extends PolymerElement {
       page: {
         type: String,
         reflectToAttribute: true,
+        //If page has changed import the appropiate page
         observer: '_pageChanged'
       },
       routeData: Object,
@@ -140,6 +155,7 @@ class MyApp extends PolymerElement {
   }
 
   static get observers() {
+    // To the routing data changes if we send the page nage based on that we need to navigate appropiate page
     return [
       '_routePageChanged(routeData.page)'
     ];
@@ -149,7 +165,7 @@ class MyApp extends PolymerElement {
      // Show the corresponding page according to the route.
      //
      // If no page was found in the route data, page will be an empty string.
-     // Show 'accountsummary' in that case. And if the page doesn't exist, show 'view404'.
+     // Show 'loginpage' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'loginnew';      
     } else if (['loginnew','accountsummary', 'rechargepage','rechargesuccess', 'rechargehistory'].indexOf(page) !== -1) {

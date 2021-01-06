@@ -11,6 +11,20 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-input/paper-input.js';
 
 class LoginNew extends PolymerElement {
+	static get properties() {
+        return {
+            user: {
+                type: Object,
+                value: function() {
+                    // fetching data from localstorage 
+                    var userlist = JSON.parse(window.localStorage.getItem('userData'));
+                    return {
+                        userlist
+                    };
+                }
+            }
+        };
+    }
 	static get template() {
 		return html`
 			<style>
@@ -50,38 +64,38 @@ class LoginNew extends PolymerElement {
 			background: #17a2b8;
 			padding: 15px;
 			box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-	}
-	.form-group {
-		margin-bottom: 1rem;
-}
-	.login-form .avatar img {
-		width: 82%;
-		margin-left: 5px;
-		margin-top: 5px;
-}
-.login-form h2 {
-	font-size: 22px;
-	margin: 35px 0 25px;
-	text-align: center;
-}
-.submitBtn{
-	background: #17a2b8;
-   color: #fff;
-   font-weight: 500;
-   padding: 10px 30px;
-}
+		}
+		.form-group {
+			margin-bottom: 1rem;
+		}
+		.login-form .avatar img {
+			width: 82%;
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+		.login-form h2 {
+			font-size: 22px;
+			margin: 35px 0 25px;
+			text-align: center;
+		}
+		.submitBtn{
+			background: #17a2b8;
+		   color: #fff;
+		   font-weight: 500;
+		   padding: 10px 30px;
+		}
 </style>
 	<div class="login-form">
 		<iron-form id="form3">
-			<form name="userForm" id="userForm">
+			<form name="userForm" id="userForm" role="form">
 					<div class="avatar">
-							<img src="images/avatar.png" alt="Avatar">
+							<img src="images/avatar.png" alt="Avatar" role="image">
 					</div>
 					<h2 class="text-center">User Login</h2> 
-					<paper-input type="text" name="name" label="User Name" id="username" required error-message="Please enter valid user name ...!" auto-validate maxlength="10" pattern="[A-Za-z]*"></paper-input>
-					<paper-input type="password" id="password" label="Password"  required error-message="Please enter valid password...!" auto-validate maxlength="5"></paper-input><br>
+					<paper-input type="text" name="name" label="User Name" id="username" required error-message="Please enter valid user name ...!" auto-validate maxlength="10" pattern="[A-Za-z]*" aria-labelledby="txtboxLabel" role="textbox"></paper-input>
+					<paper-input type="password" id="password" label="Password"  required error-message="Please enter valid password...!" auto-validate maxlength="5" role="textbox"></paper-input><br>
 					<!-- Raised button -->
-               <paper-button raised class="submitBtn" on-click="userValidation">Submit</paper-button>
+               <paper-button raised class="submitBtn" on-click="userValidation" role="button">Submit</paper-button>
 			</form>
 		</iron-form>
 	</div>`;
@@ -104,11 +118,12 @@ class LoginNew extends PolymerElement {
 		// if entered credentials correct then redirect to Account Summery page
 		if(username == "admin" && password == "pass"){
 			alert("Login Success");
-			window.location = 'accountsummary';
+			window.location = '/accountsummary';
+			return username;
 		}
 		else{
 			alert("wrong Credentials");
-			//Need to force a change on value to trigger the notify to `paper input` field focused
+			//Need to force a change on value to trigger the notify to `password` field focused
 			this.$.password.focus();
 		}
 	};

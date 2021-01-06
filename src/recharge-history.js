@@ -11,7 +11,23 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class RechargeHistory extends PolymerElement {
-  static get template() {
+  // Declare properties for the element's public API
+  static get properties() {
+        return {
+            user: {
+                type: Object,
+                value: function() {
+                    // fetch data from localstorage 
+                    var userlist = JSON.parse(window.localStorage.getItem('userData'));
+                    return {
+                        userlist
+                    };
+                }
+            }
+        };
+    }
+
+    static get template() {
     return html`
     <link rel="stylesheet" href="/node_modules/material-design-lite/material.min.css">
     <script src="/node_modules/material-design-lite/material.min.js"></script>
@@ -41,7 +57,6 @@ class RechargeHistory extends PolymerElement {
       </div>
       <div class="card">
         <div class="mdl-grid">
-            <iron-ajax url="./src/userlist.json" last-response="{{item}}" auto> </iron-ajax>
             <div class="table-responsive mdl-cell--12-col">
               <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
                   <thead>
@@ -53,7 +68,7 @@ class RechargeHistory extends PolymerElement {
                         <th scope="col" class="mdl-data-table__cell--non-numeric">Status</th>
                     </tr>
                   </thead>
-                  <template is="dom-repeat" items="{{userlist}}" >
+                  <template is="dom-repeat" items="{{user.userlist}}" >
                     <tbody>
                         <tr class="item">
                           <td class="mdl-data-table__cell--non-numeric">{{item.0}}</td>
@@ -70,13 +85,6 @@ class RechargeHistory extends PolymerElement {
       </div>
     `;
   }
-  ready() {
-    super.ready();  
-    // Get data form localstorage 
-    this.userlist = JSON.parse(window.localStorage.getItem('userData'));
-    console.log(this.userlist);
-
-  }
 }
-
+// Register the recharge-history element with the browser
 window.customElements.define('recharge-history', RechargeHistory);
