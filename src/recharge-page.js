@@ -150,6 +150,7 @@ class RechargePage extends PolymerElement {
       alert("Circle field should not empty..!");
       return false;
     }
+    // check the values assigned or not
     if(mobilenumber != "" && amount != "" && operator != "" && circle != ""){
       //storing existing values into Localstorage
       var existingRecords = JSON.parse(localStorage.getItem("userData"));

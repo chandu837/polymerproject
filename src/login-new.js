@@ -11,20 +11,6 @@ import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 import '@polymer/paper-input/paper-input.js';
 
 class LoginNew extends PolymerElement {
-	static get properties() {
-        return {
-            user: {
-                type: Object,
-                value: function() {
-                    // fetching data from localstorage 
-                    var userlist = JSON.parse(window.localStorage.getItem('userData'));
-                    return {
-                        userlist
-                    };
-                }
-            }
-        };
-    }
 	static get template() {
 		return html`
 			<style>
@@ -86,7 +72,7 @@ class LoginNew extends PolymerElement {
 		}
 </style>
 	<div class="login-form">
-		<iron-form id="form3">
+		<iron-form id="form1">
 			<form name="userForm" id="userForm" role="form">
 					<div class="avatar">
 							<img src="images/avatar.png" alt="Avatar" role="image">
@@ -119,9 +105,9 @@ class LoginNew extends PolymerElement {
 		if(username == "admin" && password == "pass"){
 			alert("Login Success");
 			window.location = '/accountsummary';
-			return username;
 		}
 		else{
+			// If entered wrong credentials displays alert
 			alert("wrong Credentials");
 			//Need to force a change on value to trigger the notify to `password` field focused
 			this.$.password.focus();

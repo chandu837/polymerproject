@@ -145,7 +145,10 @@ class MyApp extends PolymerElement {
     return {
       page: {
         type: String,
+        // default : false
+        //Set to true to cause the corresponding attribute to be set on the host node when the property value changes.
         reflectToAttribute: true,
+        // Simple observers are declared in the properties object, and always observe a single property.
         //If page has changed import the appropiate page
         observer: '_pageChanged'
       },
@@ -156,6 +159,7 @@ class MyApp extends PolymerElement {
 
   static get observers() {
     // To the routing data changes if we send the page nage based on that we need to navigate appropiate page
+    // Complex observers can monitor one or more properties.
     return [
       '_routePageChanged(routeData.page)'
     ];
@@ -163,7 +167,6 @@ class MyApp extends PolymerElement {
 
   _routePageChanged(page) {
      // Show the corresponding page according to the route.
-     //
      // If no page was found in the route data, page will be an empty string.
      // Show 'loginpage' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
@@ -182,7 +185,6 @@ class MyApp extends PolymerElement {
 
   _pageChanged(page) {
     // Import the page component on demand.
-    //
     // Note: `polymer build` doesn't like string concatenation in the import
     // statement, so break it up.
     switch (page) {

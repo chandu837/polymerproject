@@ -61,19 +61,19 @@ class RechargeSuccess extends PolymerElement {
       <div class="card">
         <h5>Recharge Success</h5>
       </div>
-      <template is="dom-repeat" items="{{user}}" >
+      <template is="dom-repeat" items="[[user]]" >
         <div class="card">
           <div class="mdl-grid ">
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield">
 
-                <paper-input type="text" name="rechargedMobileNumber" label="Mobile Number" id="rechargedMobileNumber" required auto-validate value="{{user.userlist.0}}" readonly></paper-input>
+                <paper-input type="text" name="rechargedMobileNumber" label="Mobile Number" id="rechargedMobileNumber" required auto-validate value="[[user.userlist.0]]" readonly></paper-input>
               </div>
             </div>
             <div class="mdl-cell mdl-cell--6-col">
               <div class="mdl-textfield mdl-js-textfield">
 
-                <paper-input type="text" name="rechagedAmount" label="Amount" id="rechagedAmount" required auto-validate value="{{user.userlist.1}}" readonly></paper-input>
+                <paper-input type="text" name="rechagedAmount" label="Amount" id="rechagedAmount" required auto-validate value="[[user.userlist.1]]" readonly></paper-input>
               </div>
             </div>  
             <div class="mdl-cell mdl-cell--6-col">
@@ -100,6 +100,8 @@ class RechargeSuccess extends PolymerElement {
     var digits = '0123456789'; 
     let OTP = ''; 
     for (let i = 0; i < 4; i++ ) { 
+      //The floor() method rounds a number DOWNWARDS to the nearest integer, and returns the result.
+      // random() returns a random number
         OTP += digits[Math.floor(Math.random() * 10)]; 
     }  
     // this.$.otpField.value =  OTP ;

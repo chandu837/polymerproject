@@ -11,7 +11,6 @@
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
 
 class RechargeHistory extends PolymerElement {
-  // Declare properties for the element's public API
   static get properties() {
         return {
             user: {
@@ -68,13 +67,14 @@ class RechargeHistory extends PolymerElement {
                         <th scope="col" class="mdl-data-table__cell--non-numeric">Status</th>
                     </tr>
                   </thead>
-                  <template is="dom-repeat" items="{{user.userlist}}" >
+                  <!-- Binding to text content is always one-way, host-to-target. -->
+                  <template is="dom-repeat" items="[[user.userlist]]" >
                     <tbody>
                         <tr class="item">
-                          <td class="mdl-data-table__cell--non-numeric">{{item.0}}</td>
-                          <td class="mdl-data-table__cell--non-numeric">{{item.1}}</td>
-                          <td class="mdl-data-table__cell--non-numeric">{{item.2}}</td>
-                          <td class="mdl-data-table__cell--non-numeric">{{item.3}}</td>
+                          <td class="mdl-data-table__cell--non-numeric">[[item.0]]</td>
+                          <td class="mdl-data-table__cell--non-numeric">[[item.1]]</td>
+                          <td class="mdl-data-table__cell--non-numeric">[[item.2]]</td>
+                          <td class="mdl-data-table__cell--non-numeric">[[item.3]]</td>
                           <td class="mdl-data-table__cell--non-numeric">Success</td>
                         </tr>
                     </tbody>
