@@ -9,6 +9,9 @@
  */
 
 import { PolymerElement, html } from '@polymer/polymer/polymer-element.js';
+// import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
+// import '@polymer/paper-item/paper-item.js';
+// import '@polymer/paper-listbox/paper-listbox.js';
 import '@polymer/paper-input/paper-input.js';
 
 
@@ -36,6 +39,12 @@ class RechargePage extends PolymerElement {
       .mdl-button--raised.mdl-button--colored{
         background: #17a2b8 !important;
         font-weight: 600;
+      }
+      .submitBtn{
+         background: #17a2b8;
+         color: #fff;
+         font-weight: 500;
+         padding: 10px 30px;
       }
       </style>
       <dom-module id="user-view">
@@ -106,12 +115,11 @@ class RechargePage extends PolymerElement {
                    <paper-item>carcharodontosaurus</paper-item>
                    <paper-item>diplodocus</paper-item>
                  </paper-listbox>
-               </paper-dropdown-menu>-->
+               </paper-dropdown-menu> -->
              </div>
-               <!-- Colored raised button -->
-               <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="rechageValidations">
-                 Proceed
-               </button>
+               <!-- Paper button code -->
+               
+               <paper-button raised class="submitBtn" on-click="rechageValidations" role="button">Proceed</paper-button>
            </div>
     `;
   }

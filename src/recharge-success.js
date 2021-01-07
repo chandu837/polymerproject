@@ -51,6 +51,12 @@ class RechargeSuccess extends PolymerElement {
         background: #17a2b8 !important;
         font-weight: 600;
       }
+      .submitBtn{
+         background: #17a2b8;
+         color: #fff;
+         font-weight: 500;
+         padding: 10px 30px;
+      }
       </style>
       <div class="card">
         <h5>Recharge Success</h5>
@@ -80,10 +86,8 @@ class RechargeSuccess extends PolymerElement {
               <paper-input type="text" name="otp" label="OTP" id="otp" required auto-validate value="{{OTP}}" readonly></paper-input>
             </div>  
             <div class="mdl-cell mdl-cell--8-col center-align">
-              <!-- Colored raised button --><br/><br/>
-              <button id="submitBtn" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" on-click="navigateToHistory">
-                SUBMIT
-              </button>
+              <!-- Paper button code -->
+              <paper-button raised class="submitBtn" on-click="navigateToHistory" role="button">Proceed</paper-button>
             </div>  
           </div>
         </template>
